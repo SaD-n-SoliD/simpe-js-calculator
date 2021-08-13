@@ -11,6 +11,7 @@ class Calculator {
 		const index = arr.findIndex(val => val.match(/[*\/]/));
 		if (index == -1)
 			index = arr.findIndex(val => val.match(/[\+-]/));
+		const [a, op, b] = arr.slice(index - 1, index + 2);
 	}
 
 	calculate(str) {
