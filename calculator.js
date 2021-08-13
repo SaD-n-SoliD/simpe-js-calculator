@@ -1,18 +1,20 @@
 class Calculator {
 
 	options = {
-		'+': (a, b) => a + b,
-		'-': (a, b) => a - b,
-		'*': (a, b) => a * b,
-		'/': (a, b) => a / b,
+		'+': (a, b) => +a + +b + '',
+		'-': (a, b) => a - b + '',
+		'*': (a, b) => a * b + '',
+		'/': (a, b) => a / b + '',
 	}
 
 	_simplify(arr) {
-		const index = arr.findIndex(val => val.match(/[*\/]/));
+		let index = arr.findIndex(val => val.match(/[*\/]/));
 		if (index == -1)
 			index = arr.findIndex(val => val.match(/[\+-]/));
 		const [a, op, b] = arr.slice(index - 1, index + 2);
-		return [...arr].splice(index - 1, 3, this.options[op](a, b))
+		const newArr = [...arr];
+		newArr.splice(index - 1, 3, this.options[op](a, b));
+		return newArr;
 	}
 
 	calculate(str) {
@@ -22,3 +24,6 @@ class Calculator {
 		return arr[0]
 	}
 }
+
+const calculator = new Calculator();
+console.log(calculator.calculate('1 + 2 / 2 / 1.7e-9'));
