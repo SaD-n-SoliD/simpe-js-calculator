@@ -1,5 +1,12 @@
 class Calculator {
 
+	options = {
+		'+': (a, b) => a + b,
+		'-': (a, b) => a - b,
+		'*': (a, b) => a * b,
+		'/': (a, b) => a / b,
+	}
+
 	_simplify(arr) {
 		const index = arr.findIndex(val => val.match(/[*\/]/));
 		if (index == -1)
