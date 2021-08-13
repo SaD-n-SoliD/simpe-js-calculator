@@ -1,7 +1,9 @@
 class Calculator {
 
 	_simplify(arr) {
-
+		const index = arr.findIndex(val => val.match(/[*\/]/));
+		if (index == -1)
+			index = arr.findIndex(val => val.match(/[\+-]/));
 	}
 
 	calculate(str) {
