@@ -12,6 +12,7 @@ class Calculator {
 		if (index == -1)
 			index = arr.findIndex(val => val.match(/[\+-]/));
 		const [a, op, b] = arr.slice(index - 1, index + 2);
+		return [...arr].splice(index - 1, 3, this.options[op](a, b))
 	}
 
 	calculate(str) {
